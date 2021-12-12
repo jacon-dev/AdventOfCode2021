@@ -35,5 +35,15 @@ namespace Day2
             
             Assert.AreEqual(900, response);
         }
+
+        [Test]
+        public void TestThatSubmarineAimsAsExpectedUsingCodeWarsInput()
+        {
+            var inputDirections = File.ReadAllLines(CodeWarsInputFilePath);
+            
+            var response = SubmarineControls.AimSubmarine(inputDirections);
+            
+            Assert.AreEqual(1568138742, response);
+        }
     }
 }
