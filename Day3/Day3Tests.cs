@@ -39,17 +39,17 @@ namespace Day3
             Assert.AreEqual(198, response);
         }
 
-        // [Test]
-        // public void TestThatCodeWarsInputIsCalculatedCorrectly()
-        // {
-        //     var inputArray = File.ReadLines(CodeWarsInputFilePath).ToArray();
-        //     var gammaRateBinaryString = BinaryDiagnostics.GetGammaRateBinaryString(inputArray);
-        //     var epsilonRateBinaryString = BinaryDiagnostics.GetEpsilonRateBinaryString(gammaRateBinaryString);
-        //
-        //     var response = BinaryDiagnostics.CalculatePowerConsumption(gammaRateBinaryString, epsilonRateBinaryString);
-        //     
-        //     Assert.AreEqual("TBC", response);
-        // }
+        [Test]
+        public void TestThatCodeWarsInputIsCalculatedCorrectly()
+        {
+            var inputArray = File.ReadLines(CodeWarsInputFilePath).ToArray();
+            var gammaRateBinaryString = BinaryDiagnostics.GetGammaRateBinaryString(inputArray);
+            var epsilonRateBinaryString = BinaryDiagnostics.GetEpsilonRateBinaryString(gammaRateBinaryString);
+        
+            var response = BinaryDiagnostics.CalculatePowerConsumption(gammaRateBinaryString, epsilonRateBinaryString);
+            
+            Assert.AreEqual(4147524, response);
+        }
     }
 
     public class BinaryDiagnostics
