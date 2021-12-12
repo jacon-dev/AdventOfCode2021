@@ -28,7 +28,7 @@ namespace Day3
         {
             var response = BinaryDiagnostics.GetEpsilonRateBinaryString(_gammaRateBinaryString);
             
-            Assert.AreEqual("01001", response);
+            Assert.AreEqual(_epsilonRateBinaryString, response);
         }
 
         [Test]
@@ -56,32 +56,12 @@ namespace Day3
     {
         public static string GetGammaRateBinaryString(string[] inputBinaries)
         {
-            var column1 = new List<string>();
-            var column2 = new List<string>();
-            var column3 = new List<string>();
-            var column4 = new List<string>();
-            var column5 = new List<string>();
-            
-
-            foreach (var binary in inputBinaries)
-            {
-                column1.Add(binary.ToCharArray(0,1).First().ToString());
-                column2.Add(binary.ToCharArray(1,1).First().ToString());
-                column3.Add(binary.ToCharArray(2,1).First().ToString());
-                column4.Add(binary.ToCharArray(3,1).First().ToString());
-                column5.Add(binary.ToCharArray(4,1).First().ToString());
-            }
-
-            var commonBinaryArray = new List<string>
-            {
-                column1.Count(x => x == "1") > column1.Count(x => x == "0") ? "1" : "0",
-                column2.Count(x => x == "1") > column2.Count(x => x == "0") ? "1" : "0",
-                column3.Count(x => x == "1") > column3.Count(x => x == "0") ? "1": "0",
-                column4.Count(x => x == "1") > column4.Count(x => x == "0") ? "1": "0",
-                column5.Count(x => x == "1") > column5.Count(x => x == "0") ? "1": "0"
-            };
-
-            return string.Join("", commonBinaryArray);
+            return new string(Enumerable.Range(0, inputBinaries.First().Length)
+                .Select(i =>
+                    inputBinaries.Count(x => x[i] == '1') > inputBinaries.Count(x => x[i] == '0')
+                        ? '1'
+                        : '0')
+                .ToArray());
         }
 
         public static string GetEpsilonRateBinaryString(string gammaRateBinaryString)
